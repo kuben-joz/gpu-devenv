@@ -1,0 +1,32 @@
+{
+  "name": "cuda-devel",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  //"image": "gitea.eden.mini.pw.edu.pl/jjozefowicz/gpu-dev:01",
+  "remoteUser": "cudadev",
+  "updateRemoteUserUID": true,
+  "runArgs": [
+    "--gpus=all",
+    "--cap-add=SYS_PTRACE",
+    "--security-opt=seccomp=unconfined",
+    "--ipc=host"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools-extension-pack",
+        "NVIDIA.nsight-vscode-edition",
+        "ms-vscode.makefile-tools",
+        "ms-vscode.cmake-tools",
+        "vadimcn.vscode-lldb",
+        "llvm-vs-code-extensions.vscode-clangd"
+      ],
+      "settings": {
+        // Launch zsh by default when students open a terminal
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "cmake.configureOnOpen": true
+      }
+    }
+  }
+}
